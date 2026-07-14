@@ -3,12 +3,14 @@ import { io } from 'socket.io-client';
 
 let socket;
 
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
+
 export const useSocket = () => {
   const socketRef = useRef(null);
 
   useEffect(() => {
     if (!socket) {
-      socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000');
+      socket = io(SOCKET_URL, { transports: ['websocket', 'polling'] });
     }
     socketRef.current = socket;
     return () => {};
@@ -18,6 +20,6 @@ export const useSocket = () => {
 };
 
 export const getSocket = () => {
-  if (!socket) socket = io(process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000');
+  if (!socket) socket = io(SOCKET_URL, { transports: ['websocket', 'polling'] });
   return socket;
 };

@@ -1,0 +1,22 @@
+
+> smart-restaurant-backend@1.0.0 dev
+> node node_modules/nodemon/bin/nodemon.js server.js
+
+[33m[nodemon] 3.1.14[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+Server running on port 5000
+MongoDB Connected: localhost
+Client connected: aNelsuDYYySWocl5AAAB
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+Server running on port 5000 in production mode
+Client connected: RH9A43CJI2SXoTY9AAAB
+MongoDB Connected: ac-9bspyfn-shard-00-01.k6tqt2g.mongodb.net
+Client connected: GhWSPLPbAX7D-GbhAAAD
+Client disconnected: RH9A43CJI2SXoTY9AAAB
+Client disconnected: GhWSPLPbAX7D-GbhAAAD
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m

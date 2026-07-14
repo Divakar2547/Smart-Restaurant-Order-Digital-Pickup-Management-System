@@ -45,7 +45,7 @@ const Login = () => {
             Streamline your restaurant operations with real-time order tracking and digital pickup codes.
           </p>
           <div className="w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white">
-            <img src={img1} alt="Restaurant" className="w-full h-64 object-cover" />
+            <img src={img1} alt="Restaurant" className="w-full h-48 object-cover" />
           </div>
         </div>
       </div>
