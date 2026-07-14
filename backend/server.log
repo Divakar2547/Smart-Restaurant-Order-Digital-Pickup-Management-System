@@ -1,0 +1,17 @@
+c:\Users\Hari priya\Desktop\Smart Restaurant Order & Digital Pickup Management System\backend\node_modules\twilio\lib\base\BaseTwilio.js:71
+                throw new Error("accountSid must start with AC" + apiKeyMsg);
+                ^
+
+Error: accountSid must start with AC
+    at new Client (c:\Users\Hari priya\Desktop\Smart Restaurant Order & Digital Pickup Management System\backend\node_modules\twilio\lib\base\BaseTwilio.js:71:23)
+    at new Twilio (c:\Users\Hari priya\Desktop\Smart Restaurant Order & Digital Pickup Management System\backend\node_modules\twilio\lib\rest\Twilio.js:33:9)
+    at TwilioSDK (c:\Users\Hari priya\Desktop\Smart Restaurant Order & Digital Pickup Management System\backend\node_modules\twilio\lib\index.js:40:12)
+    at Object.<anonymous> (c:\Users\Hari priya\Desktop\Smart Restaurant Order & Digital Pickup Management System\backend\utils\sms.js:4:5)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+
+Node.js v24.11.1
