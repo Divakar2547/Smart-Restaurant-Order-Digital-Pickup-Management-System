@@ -7,8 +7,11 @@ import { getSocket } from '../../hooks/useSocket';
 import { formatCurrency } from '../../utils/helpers';
 import { customerLinks } from '../../utils/navLinks';
 import { useAuth } from '../../context/AuthContext';
-import { FiPackage, FiSearch, FiCheckCircle, FiShoppingCart, FiPlus, FiMinus, FiTrash2, FiX } from 'react-icons/fi';
+import { FiPackage, FiSearch, FiCheckCircle, FiShoppingCart, FiPlus, FiMinus, FiTrash2, FiX, FiShield, FiRefreshCw } from 'react-icons/fi';
 import { MdQrCodeScanner, MdRestaurantMenu } from 'react-icons/md';
+import { motion } from 'framer-motion';
+import logo from '../../assets/img1.jpeg';
+import heroBg from '../../assets/img2.jpeg';
 import toast from 'react-hot-toast';
 
 const STATUS_STEPS = ['pending', 'preparing', 'ready', 'delivered'];
@@ -157,6 +160,85 @@ const CartDrawer = ({ cart, onClose, onQtyChange, onRemove, onPlaceOrder, placin
   );
 };
 
+const fade = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } };
+
+const FEATURES = [
+  { icon: '🛒', title: 'Easy Ordering', desc: 'Order your favorite food with just a few clicks' },
+  { icon: '🔢', title: 'Digital Pickup Code', desc: 'A unique pickup code — secure and fast pickup' },
+  { icon: '📡', title: 'Real-time Updates', desc: 'Track your order status in real-time' },
+  { icon: '🛡️', title: 'Secure & Reliable', desc: 'Always safe with us' },
+];
+
+const HeroSection = ({ user, onViewMenu, onTrackOrder }) => (
+  <motion.div
+    variants={{ hidden: {}, show: { transition: { staggerChildren: 0.12 } } }}
+    initial="hidden" animate="show"
+    className="rounded-3xl overflow-hidden"
+    style={{
+      backgroundImage: `linear-gradient(135deg, rgba(46,16,101,0.45) 0%, rgba(76,29,149,0.35) 45%, rgba(109,40,217,0.30) 100%), url(${heroBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      minHeight: '420px',
+    }}
+  >
+    {/* Top Nav Bar */}
+    <div className="flex items-center justify-between px-8 pt-6 pb-2">
+      <motion.div variants={fade} className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-white/20 border-2 border-white/60 flex items-center justify-center shadow-lg overflow-hidden">
+          <img src={logo} alt="SR Logo" className="w-full h-full object-cover" />
+        </div>
+        <div>
+          <span className="text-gray-900 font-black text-sm tracking-wide leading-none">Smart Restaurant</span>
+          <p className="text-gray-700 text-xs">Order & Pickup System</p>
+        </div>
+      </motion.div>
+      <motion.div variants={fade} className="flex items-center gap-2">
+        </motion.div>
+    </div>
+
+    {/* Hero Body */}
+    <div className="grid lg:grid-cols-1 gap-0">
+      {/* Left */}
+      <div className="px-8 py-10 space-y-6">
+        <motion.p variants={fade} className="text-gray-900 text-xs font-bold tracking-[0.2em] uppercase">Welcome to Smart Restaurant</motion.p>
+        <motion.h1 variants={fade} className="text-gray-900 text-4xl font-black leading-tight">
+          Order Food Easily,<br />
+          <span className="text-gray-800">Get Digital Pickup</span>
+        </motion.h1>
+        <motion.p variants={fade} className="text-gray-800 text-sm leading-relaxed max-w-sm">
+          Enjoy your favorite meals with a smart ordering and digital pickup experience.
+        </motion.p>
+        <motion.div variants={fade} className="flex gap-3 flex-wrap">
+          <button onClick={onViewMenu} className="px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95"
+            style={{ background: '#4c1d95', color: 'white' }}>
+            🍽️ View Menu
+          </button>
+          <button onClick={onTrackOrder} className="px-6 py-2.5 rounded-full text-sm font-bold text-gray-900 border border-gray-900/50 hover:bg-black/10 transition-all">
+            📦 Track Order
+          </button>
+        </motion.div>
+
+        {/* Feature Cards */}
+        <motion.div variants={fade} className="grid grid-cols-2 gap-3 pt-2">
+          {FEATURES.map(f => (
+            <div key={f.title}
+              className="rounded-2xl p-4 border border-black/10 hover:border-black/20 transition-all hover:-translate-y-0.5"
+              style={{ background: 'rgba(255,255,255,0.55)', backdropFilter: 'blur(10px)' }}
+            >
+              <span className="text-2xl">{f.icon}</span>
+              <p className="text-gray-900 text-xs font-bold mt-2">{f.title}</p>
+              <p className="text-gray-700 text-xs mt-0.5 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Right side empty */}
+      <div className="hidden lg:block" />
+    </div>
+  </motion.div>
+);
+
 const CustomerDashboard = () => {
   const { user } = useAuth();
   const [currentOrder, setCurrentOrder] = useState(null);
@@ -247,6 +329,14 @@ const CustomerDashboard = () => {
           )}
         </div>
 
+        {/* ── HERO SECTION ── */}
+        <HeroSection
+          user={user}
+          onViewMenu={() => document.getElementById('menu-section')?.scrollIntoView({ behavior: 'smooth' })}
+          onTrackOrder={() => document.getElementById('order-tracker')?.scrollIntoView({ behavior: 'smooth' })}
+        />
+
+        <div id="order-tracker">
         {currentOrder ? <OrderTracker order={currentOrder} /> : (
           <div className="card text-center py-10">
             <FiPackage size={48} className="mx-auto text-gray-300 dark:text-gray-600 mb-4" />
@@ -254,11 +344,12 @@ const CustomerDashboard = () => {
             <p className="text-sm text-gray-400 mt-1">Browse the menu below and place your order</p>
           </div>
         )}
+        </div>
 
         <PickupCounter />
 
         {/* Menu Section */}
-        <div className="space-y-4">
+        <div id="menu-section" className="space-y-4">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
             <MdRestaurantMenu size={24} className="text-purple-600" /> Our Menu
           </h2>
