@@ -33,17 +33,19 @@ const Login = () => {
         <div className="absolute bottom-[-60px] right-[-60px] w-56 h-56 bg-white/5 rounded-full" />
 
         <div className="relative z-10 flex flex-col items-center w-full max-w-lg">
-          <div className="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center font-bold text-3xl mb-6 shadow-xl backdrop-blur-sm border border-white/20">SR</div>
+          <div className="w-20 h-20 rounded-3xl overflow-hidden mb-6 shadow-xl border-4 border-white/30">
+            <img src={img1} alt="SR Logo" className="w-full h-full object-cover" />
+          </div>
           <h1 className="text-4xl font-extrabold text-center leading-snug mb-3 drop-shadow">
             Smart Restaurant<br />
             <span className="text-purple-200">Order &amp; Digital Pickup</span><br />
             Management System
           </h1>
-          <p className="text-purple-100 text-center text-base mb-8 max-w-md leading-relaxed">
+          <p className="text-purple-100 text-center text-base mb-6 max-w-md leading-relaxed">
             Streamline your restaurant operations with real-time order tracking and digital pickup codes.
           </p>
-          <div className="w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
-            <img src={img1} alt="Restaurant" className="w-full h-80 object-cover" />
+          <div className="w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-white">
+            <img src={img1} alt="Restaurant" className="w-full h-64 object-cover" />
           </div>
         </div>
       </div>
@@ -52,9 +54,11 @@ const Login = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6">
         <div className="w-full max-w-md">
           <div className="text-center mb-8 lg:hidden">
-            <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4 shadow-lg">SR</div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Smart Restaurant</h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-1">Order &amp; Digital Pickup Management</p>
+            <div className="w-16 h-16 rounded-2xl overflow-hidden mx-auto mb-4 shadow-lg border-2 border-purple-200">
+              <img src={img1} alt="SR Logo" className="w-full h-full object-cover" />
+            </div>
+            <h1 className="text-2xl font-black text-gray-900 dark:text-white">Smart Restaurant</h1>
+            <p className="text-purple-700 font-semibold text-sm">Order &amp; Digital Pickup Management System</p>
           </div>
           <div className="hidden lg:block mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Welcome back!</h2>

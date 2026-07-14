@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
 import { FiUser, FiMail, FiPhone, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import logo from '../../assets/img1.jpeg';
 
 const Field = ({ icon: Icon, label, name, type = 'text', placeholder, value, onChange }) => (
   <div>
@@ -31,10 +32,13 @@ const Register = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4 shadow-lg">SR</div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Create Account</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">Join Smart Restaurant today</p>
+        <div className="text-center mb-6">
+          <div className="w-16 h-16 rounded-2xl overflow-hidden mx-auto mb-4 shadow-lg border-2 border-purple-200">
+            <img src={logo} alt="SR Logo" className="w-full h-full object-cover" />
+          </div>
+          <h1 className="text-2xl font-black text-gray-900 dark:text-white">Smart Restaurant</h1>
+          <p className="text-purple-700 font-semibold text-sm">Order &amp; Digital Pickup Management System</p>
+          <p className="text-gray-500 text-xs mt-1">Streamline your restaurant operations with real-time order tracking and digital pickup codes.</p>
         </div>
         <div className="card shadow-xl">
           <form onSubmit={handleSubmit} className="space-y-4">

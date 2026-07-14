@@ -184,7 +184,7 @@ const HeroSection = ({ user, onViewMenu, onTrackOrder }) => (
     {/* Top Nav Bar */}
     <div className="flex items-center justify-between px-8 pt-6 pb-2">
       <motion.div variants={fade} className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-white/20 border-2 border-white/60 flex items-center justify-center shadow-lg overflow-hidden">
+        <div className="w-10 h-10 rounded-full border-2 border-gray-900/30 shadow-lg overflow-hidden">
           <img src={logo} alt="SR Logo" className="w-full h-full object-cover" />
         </div>
         <div>

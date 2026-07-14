@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';
 import { FiMail, FiArrowLeft } from 'react-icons/fi';
+import logo from '../../assets/img1.jpeg';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +26,9 @@ const ForgotPassword = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-violet-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">SR</div>
+          <div className="w-16 h-16 rounded-2xl overflow-hidden mx-auto mb-4 shadow-lg border-2 border-purple-200">
+            <img src={logo} alt="SR Logo" className="w-full h-full object-cover" />
+          </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Forgot Password</h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">We'll send you reset instructions</p>
         </div>

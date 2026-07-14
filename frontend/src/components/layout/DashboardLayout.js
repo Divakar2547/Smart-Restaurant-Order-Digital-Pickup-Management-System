@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { FiSun, FiMoon, FiBell, FiLogOut, FiMenu, FiX } from 'react-icons/fi';
+import logo from '../../assets/img1.jpeg';
 
 const Sidebar = ({ links, isOpen, onClose }) => {
   const location = useLocation();
@@ -11,7 +12,9 @@ const Sidebar = ({ links, isOpen, onClose }) => {
       {isOpen && <div className="fixed inset-0 bg-black/50 z-20 lg:hidden" onClick={onClose} />}
       <aside className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 z-30 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
         <div className="flex items-center gap-3 px-6 py-5 border-b border-gray-200 dark:border-gray-700">
-          <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">SR</div>
+          <div className="w-8 h-8 rounded-lg overflow-hidden border border-purple-200 flex-shrink-0">
+            <img src={logo} alt="SR" className="w-full h-full object-cover" />
+          </div>
           <span className="font-bold text-gray-900 dark:text-white text-lg">Smart Restaurant</span>
         </div>
         <nav className="p-4 space-y-1">
