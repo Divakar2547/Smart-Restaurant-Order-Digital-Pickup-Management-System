@@ -15,6 +15,7 @@ const server = http.createServer(app);
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
+  'https://smart-restaurant-xi.vercel.app',
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
