@@ -19,13 +19,24 @@ const allowedOrigins = [
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
 const io = new Server(server, {
-  cors: { origin: allowedOrigins, methods: ['GET', 'POST', 'PUT', 'DELETE'], credentials: true }
+  cors: { ...corsOptions, methods: ['GET', 'POST', 'PUT', 'DELETE'] }
 });
 
 app.set('io', io);
 
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
