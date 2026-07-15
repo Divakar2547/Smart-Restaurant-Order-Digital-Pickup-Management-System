@@ -3,7 +3,6 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-const path = require('path');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error');
 
@@ -50,13 +49,7 @@ app.use('/api/customer', require('./routes/customer'));
 app.get('/api/health', (req, res) => res.json({ status: 'OK', timestamp: new Date() }));
 app.get('/', (req, res) => res.json({ message: 'Smart Restaurant API is running', version: '1.0.0' }));
 
-// Serve React frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-  });
-}
+
 
 // Socket.IO
 io.on('connection', (socket) => {
