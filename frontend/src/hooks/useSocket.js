@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 
 let socket;
 
-const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://smart-restaurant-order-digital-pickup.onrender.com';
 
 export const useSocket = () => {
   const socketRef = useRef(null);
